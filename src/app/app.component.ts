@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, HostBinding} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'todo-client';
+  private isDark: boolean;
+
+  constructor() {
+    this.isDark = JSON.parse(localStorage.getItem('theme')) === true;
+    localStorage.setItem('theme', JSON.stringify(this.isDark));
+  }
+
+  @HostBinding('class')
+  get themeMode() {
+    return this.isDark ? 'dark-theme' : 'light-theme';
+  }
 }

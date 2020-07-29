@@ -3,6 +3,12 @@ import {NgModule} from '@angular/core';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MaterialModule} from './material/material.module';
+import {StoreModule} from '@ngrx/store';
+import {EffectsModule} from '@ngrx/effects';
+import {HttpClientModule} from '@angular/common/http';
+import {JwtModule} from '@auth0/angular-jwt';
 
 @NgModule({
   declarations: [
@@ -10,7 +16,22 @@ import {AppComponent} from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MaterialModule,
+    HttpClientModule,
+    StoreModule.forRoot({}),
+    EffectsModule.forRoot(),
+    JwtModule.forRoot({
+      config: {
+        headerName: 'x-access-token',
+        authScheme: '',
+        tokenGetter: () => {
+          return localStorage.getItem('x-access-token');
+        },
+        allowedDomains: ['localhost:3000'],
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
