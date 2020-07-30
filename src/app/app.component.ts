@@ -6,7 +6,7 @@ import {Component, HostBinding} from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  private isDark: boolean;
+  public isDark: boolean;
 
   constructor() {
     this.isDark = JSON.parse(localStorage.getItem('theme')) === true;
@@ -15,6 +15,7 @@ export class AppComponent {
 
   @HostBinding('class')
   get themeMode() {
+    this.isDark = JSON.parse(localStorage.getItem('theme')) === true;
     return this.isDark ? 'dark-theme' : 'light-theme';
   }
 }

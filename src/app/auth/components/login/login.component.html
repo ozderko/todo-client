@@ -1,10 +1,13 @@
 <section class="auth">
+  <div class="auth__navigate" [routerLink]="''">
+    <mat-icon>arrow_back</mat-icon>
+  </div>
   <form class="auth__container" [formGroup]="user" (ngSubmit)="onSubmit()" #width>
     <div class="auth__title">
       <h2>SIGN IN</h2>
     </div>
     <div class="auth__subtitle">
-      <span>Complete <p>the</p> task back<p>wards.</p></span>
+      <span>Complete t<p>he</p> task backw<p>ards.</p></span>
     </div>
     <mat-form-field appearance="outline">
       <mat-label>Email</mat-label>
@@ -21,11 +24,12 @@
       <hr>
     </div>
     <div class="auth__container--boxb">
-      <button mat-flat-button color="primary" class="auth__container--button">Sign in</button>
+      <button mat-flat-button color="accent" class="auth__container--button">Sign in</button>
+    </div>
+    <div class="auth__welcome">
+      <span>WELCOME</span>
     </div>
   </form>
 <!--  TODO width off container-->
-  <div class="auth__welcome" [style.right.px]="countWidth(width)">
-    <span>WELCOME</span>
-  </div>
+
 </section>

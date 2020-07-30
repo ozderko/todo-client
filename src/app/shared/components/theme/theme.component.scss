@@ -1,0 +1,43 @@
+@import "../../../../assets/variables/colors";
+@import "../../../../../node_modules/@angular/material/theming";
+
+.theme {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  height: 80px;
+  top: 0;
+  left: 150px;
+  z-index: 1;
+  cursor: pointer;
+
+  span {
+    font-size: 30px;
+    user-select: none;
+  }
+}
+
+
+@mixin theme-dark($theme, $theme-type) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $accent-color-opacity: $accent-white-opacity;
+  $white-dark-color: $white;
+
+  @if $theme-type == 'dark-theme' {
+    $accent-color-opacity: $accent-dark-opacity;
+    $white-dark-color: $accent-dark;
+  }
+
+  .theme {
+    background: $accent-color-opacity;
+
+    span {
+      color: $white-dark-color;
+    }
+  }
+
+
+}

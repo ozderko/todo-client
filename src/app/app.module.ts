@@ -9,6 +9,7 @@ import {StoreModule} from '@ngrx/store';
 import {EffectsModule} from '@ngrx/effects';
 import {HttpClientModule} from '@angular/common/http';
 import {JwtModule} from '@auth0/angular-jwt';
+import {SharedModule} from "./shared/shared.module";
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import {JwtModule} from '@auth0/angular-jwt';
         },
         allowedDomains: ['localhost:3000'],
       }
-    })
+    }),
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

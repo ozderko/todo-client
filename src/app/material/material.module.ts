@@ -3,7 +3,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {CommonModule} from '@angular/common';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
-import {MatDividerModule} from "@angular/material/divider";
+import {MatDividerModule} from '@angular/material/divider';
+import {MatIconModule} from '@angular/material/icon';
 
 
 @NgModule({
@@ -12,14 +13,16 @@ import {MatDividerModule} from "@angular/material/divider";
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    MatDividerModule
+    MatDividerModule,
+    MatIconModule
   ],
   exports: [
     CommonModule,
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    MatDividerModule
+    MatDividerModule,
+    MatIconModule
   ]
 })
 export class MaterialModule {

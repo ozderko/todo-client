@@ -1,25 +1,44 @@
 @import "../../../../assets/variables/colors";
+@import "../../../../../node_modules/@angular/material/theming";
 
 .auth {
   position: relative;
-  background: $primary-white;
   width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: flex-end;
   align-items: center;
 
+  &__navigate {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    cursor: pointer;
+
+    mat-icon {
+      font-size: 70px;
+      width: 70px;
+      height: 70px;
+      user-select: none;
+    }
+  }
+
   &__title {
     position: absolute;
-    width: 300px;
+    width: 60%;
     top: 2%;
     right: -100px;
-    padding: 20px 0 20px 40px;
-    background: $accent-white-opacity;
+    padding: 20px 0 20px 14%;
+
 
     h2 {
       font-size: 48px;
-      color: $primary-white;
+      font-weight: lighter;
       margin: 0;
     }
 
@@ -27,10 +46,10 @@
 
   &__subtitle {
     position: absolute;
-    width: 586px;
+    width: 650px;
     height: 231px;
     top: 1%;
-    left: -336px;
+    left: -445px;
     span {
       color: $white;
       font-size: 63px;
@@ -40,7 +59,6 @@
 
       p {
         margin: 0;
-        color: $primary-white;
         display: inline;
       }
     }
@@ -48,22 +66,24 @@
 
   &__welcome {
     position: absolute;
-    bottom: 55px;
+    bottom: -69px;
+    left: -658px;
 
     span {
       color: $accent-light-white-opacity;
-      font-size: 138px;
+      font-size: 120px;
+      font-weight: bold;
       letter-spacing: 0.205em;
     }
   }
 
   &__container {
-    background: $white;
     position: relative;
-    width: 30%;
-    height: 80%;
+    width: 35%;
+    height: 85%;
     margin: 0 100px;
     padding: 0 70px;
+    z-index: 10;
     box-shadow: 0px 50px 50px rgba(0, 0, 0, 0.25);
     display: flex;
     flex-direction: column;
@@ -76,6 +96,7 @@
 
     &--button {
       padding: 0 10%;
+      font-size: 20px;
     }
 
     &--line {
@@ -95,7 +116,7 @@
 }
 
 
-//TODO material and dark theme
+//TODO material
 
 ::ng-deep {
   .mat-form-field {
@@ -107,4 +128,54 @@
   }
 }
 
+//dark theme
+
+@mixin login-dark-theme($theme, $theme-type) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $primary-color: $primary-white;
+  $accent-color-opacity: $accent-white-opacity;
+  $white-gray-color: $white;
+  $white-dark-color: $white;
+
+  @if $theme-type == 'dark-theme' {
+    $primary-color: $primary-dark;
+    $accent-color-opacity: $accent-dark-opacity;
+    $white-gray-color: $accent-dark;
+    $white-dark-color: $primary-dark;
+  }
+
+  .auth {
+    background: $primary-color;
+
+    &__navigate {
+      background: $accent-color-opacity;
+
+      mat-icon {
+        color: $white-dark-color;
+      }
+    }
+
+    &__title {
+      background: $accent-color-opacity;
+
+      h2 {
+        color: $primary-color;
+      }
+    }
+
+    &__subtitle {
+      span {
+        p {
+          color: $primary-color;
+        }
+      }
+    }
+
+    &__container {
+      background: $white-gray-color;
+    }
+  }
+
+}
 

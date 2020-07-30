@@ -19,7 +19,7 @@ import {MaterialModule} from '../material/material.module';
     ReactiveFormsModule,
     MaterialModule,
     StoreModule.forFeature('authFeature', {auth: authReducer}),
-    EffectsModule.forFeature([AuthEffects])
+    EffectsModule.forFeature([AuthEffects]),
   ]
 })
 export class AuthModule {
