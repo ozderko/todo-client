@@ -1,5 +1,31 @@
-<!--debug code |TODO|-->
-<input #inputLogin>
-<input type="password" #inputPassword>
-<button (click)="login(inputLogin.value, inputPassword.value)">Submit</button>
-<button (click)="color()">Color</button>
+<section class="auth">
+  <form class="auth__container" [formGroup]="user" (ngSubmit)="onSubmit()" #width>
+    <div class="auth__title">
+      <h2>SIGN IN</h2>
+    </div>
+    <div class="auth__subtitle">
+      <span>Complete <p>the</p> task back<p>wards.</p></span>
+    </div>
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" placeholder="Write email">
+    </mat-form-field>
+    <div class="auth__container--line">
+      <hr>
+    </div>
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input matInput formControlName="password" type="password" placeholder="Write password">
+    </mat-form-field>
+    <div class="auth__container--line">
+      <hr>
+    </div>
+    <div class="auth__container--boxb">
+      <button mat-flat-button color="primary" class="auth__container--button">Sign in</button>
+    </div>
+  </form>
+<!--  TODO width off container-->
+  <div class="auth__welcome" [style.right.px]="countWidth(width)">
+    <span>WELCOME</span>
+  </div>
+</section>

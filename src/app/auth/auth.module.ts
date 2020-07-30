@@ -6,7 +6,8 @@ import {StoreModule} from '@ngrx/store';
 import {authReducer} from './actions/reducer/auth.reducers';
 import {EffectsModule} from '@ngrx/effects';
 import {AuthEffects} from './actions/effects/auth.effects';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MaterialModule} from '../material/material.module';
 
 
 @NgModule({
@@ -14,7 +15,9 @@ import {ReactiveFormsModule} from '@angular/forms';
   imports: [
     CommonModule,
     AuthRoutingModule,
+    FormsModule,
     ReactiveFormsModule,
+    MaterialModule,
     StoreModule.forFeature('authFeature', {auth: authReducer}),
     EffectsModule.forFeature([AuthEffects])
   ]

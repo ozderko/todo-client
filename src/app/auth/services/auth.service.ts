@@ -23,8 +23,4 @@ export class AuthService {
         })
       );
   }
-
-  getColor() {
-    return this.http.get(`${this.baseApiUrl}/marker`);
-  }
 }
