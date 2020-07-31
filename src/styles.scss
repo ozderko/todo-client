@@ -6,6 +6,7 @@
 
 @import "app/auth/components/login/login.component";
 @import "app/shared/components/theme/theme.component";
+@import "app/home/components/home/home.component";
 // Plus imports for other components in your app.
 
 $general-typography: mat-typography-config(
@@ -15,7 +16,8 @@ $font-family: '"Montserrat", sans-serif'
 
 @mixin color-theme-components($theme, $theme-type) {
   @include login-dark-theme($theme, $theme-type);
-  @include theme-dark($theme, $theme-type)
+  @include theme-dark($theme, $theme-type);
+  @include home-dark-theme($theme, $theme-type);
 }
 
 // Include the common styles for Angular Material. We include this here so that you only

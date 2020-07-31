@@ -4,7 +4,6 @@
 .home {
   width: 100vw;
   height: 100vh;
-  background: $primary-white;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -20,7 +19,6 @@
       font-weight: bold;
       line-height: 116.9%;
       letter-spacing: 0.205em;
-      color: $accent-white;
     }
 
     &--title {
@@ -63,7 +61,6 @@
           font-size: 61px;
           width: 61px;
           height: 61px;
-          color: $primary-white;
         }
       }
     }
@@ -71,7 +68,85 @@
     &--rectangle {
       width: 525px;
       height: 66px;
-      background: $accent-white;
     }
   }
+
+  &__action {
+    position: relative;
+
+    &--rectangle {
+      position: absolute;
+      width: 525px;
+      right: 0;
+      bottom: -300px;
+      height: 18px;
+    }
+
+    &--buttons {
+      position: absolute;
+      width: 500px;
+      right: 145px;
+      bottom: -255px;
+      display: flex;
+      justify-content: space-between;
+
+      button {
+        margin: 0 10px 0 10px
+      }
+    }
+  }
+}
+
+
+@mixin home-dark-theme($theme, $theme-type) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $primary-color: $primary-white;
+  $accent-color: $accent-white;
+  $white-gray-color: $white;
+  $white-dark-color: $white;
+
+  @if $theme-type == 'dark-theme' {
+    $primary-color: $primary-dark;
+    $accent-color: $accent-dark;
+    $white-gray-color: $accent-dark;
+    $white-dark-color: $primary-dark;
+  }
+
+  .home {
+    background: $primary-color;
+
+    &__info {
+
+      &--logo {
+        color: $accent-color;
+      }
+
+      &--subtitle {
+        div {
+          mat-icon {
+            color: $primary-color;
+          }
+        }
+      }
+
+      &--rectangle {
+        background: $accent-color;
+      }
+    }
+
+    &__action {
+      &--rectangle {
+        background: $accent-color;
+      }
+
+      &--buttons {
+        button:hover {
+          color: $primary-color!important;
+        }
+      }
+    }
+  }
+
+
 }
