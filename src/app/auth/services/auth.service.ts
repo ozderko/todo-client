@@ -5,6 +5,7 @@ import {AuthModel} from '../models/auth.model';
 import {AuthResultModel} from '../models/auth-result.model';
 import {tap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ import {Observable} from 'rxjs';
 export class AuthService {
   public baseApiUrl = environment.baseApiUrl;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
   }
 
   login(login: AuthModel): Observable<AuthResultModel> {
@@ -20,6 +21,7 @@ export class AuthService {
       .pipe(
         tap((tokens: AuthResultModel) => {
             localStorage.setItem('x-access-token', tokens.accessToken);
+            this.router.navigate(['/tasks']);
         })
       );
   }
