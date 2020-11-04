@@ -1,9 +1,14 @@
 import {Component, HostBinding} from '@angular/core';
+import {RouterOutlet} from '@angular/router';
+import {slideInAnimation} from './route-animations';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  animations: [
+    slideInAnimation
+  ]
 })
 export class AppComponent {
   public isDark: boolean;
@@ -17,5 +22,10 @@ export class AppComponent {
   get themeMode() {
     this.isDark = JSON.parse(localStorage.getItem('theme')) === true;
     return this.isDark ? 'dark-theme' : 'light-theme';
+  }
+
+  prepareRoute(outlet: RouterOutlet) {
+    console.log(outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'])
+    return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
   }
 }

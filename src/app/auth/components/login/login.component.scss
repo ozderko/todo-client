@@ -10,7 +10,7 @@
   align-items: center;
 
   &__navigate {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     height: 100vh;
@@ -80,7 +80,7 @@
   &__container {
     position: relative;
     width: 35%;
-    height: 85%;
+    height: 75%;
     margin: 0 100px;
     padding: 0 70px;
     z-index: 10;
