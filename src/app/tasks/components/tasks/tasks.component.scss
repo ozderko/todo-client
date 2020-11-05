@@ -1,0 +1,21 @@
+@import "../../../../assets/variables/colors";
+@import "../../../../../node_modules/@angular/material/theming";
+
+.tasks {
+  min-height: calc(100vh - 130px);
+  padding-top: 130px;
+}
+
+@mixin tasks-dark-theme($theme, $theme-type) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $primary-color: $primary-white;
+
+  @if $theme-type == 'dark-theme' {
+    $primary-color: $primary-dark;
+  }
+
+  .tasks {
+      background: $primary-color;
+  }
+}

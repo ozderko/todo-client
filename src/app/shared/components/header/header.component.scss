@@ -1,0 +1,71 @@
+@import "../../../../assets/variables/variables";
+@import "../../../../assets/variables/colors";
+@import "../../../../../node_modules/@angular/material/theming";
+
+.header {
+  width: 65%;
+  height: $header-height;
+  border-radius: 0 0 0 90px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  //align-items: center;
+  z-index: 2;
+
+  button {
+    border: 0;
+    font-size: 30px;
+    background: 0;
+    margin: 0 40px;
+    cursor: pointer;
+  }
+
+  &__logo {
+    height: $header-height + 30;
+    margin: 0 20px;
+    padding: 0 10px;
+    display: flex;
+    align-items: flex-end;
+
+    h1 {
+      margin: 0;
+      font-weight: 100;
+    }
+  }
+}
+
+@mixin header-dark-theme($theme, $theme-type) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $primary-color: $primary-header;
+  $accent-color: $accent-white;
+  $accent-color-opacity: $accent-white-opacity;
+  $white-gray-color: $white;
+  $white-dark-color: $white;
+
+  @if $theme-type == 'dark-theme' {
+    $primary-color: $accent-dark;
+    $accent-color: $primary-dark;
+    $accent-color-opacity: $accent-dark-opacity;
+    $white-gray-color: $accent-dark;
+    $white-dark-color: $primary-dark;
+  }
+
+  .header {
+    background: $primary-color;
+
+    button {
+      color: $accent-color
+    }
+
+    &__logo {
+      background: $accent-color-opacity;
+
+      h1 {
+        color: $white-dark-color;
+      }
+    }
+  }
+}

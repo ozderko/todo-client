@@ -1,4 +1,5 @@
 <app-theme [isDark]="isDark"></app-theme>
+<app-header *ngIf="currentRoute && (currentRoute !== '/auth' && currentRoute !== '/')"></app-header>
 <main [@routeAnimations]="prepareRoute(outlet)" class="content">
   <router-outlet #outlet="outlet"></router-outlet>
 </main>
