@@ -1,13 +1,13 @@
 <section class="toolbar">
-  <div class="toolbar__container">
+  <form class="toolbar__container" [formGroup]="createForm" (ngSubmit)="onSubmit()">
     <mat-form-field appearance="outline">
       <mat-label>Write name task...</mat-label>
-      <input matInput  placeholder="Write name">
+      <input matInput  placeholder="Write name" formControlName="name">
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Write description tasl...</mat-label>
-      <input matInput  placeholder="Write description">
+      <input matInput  placeholder="Write description" formControlName="description">
     </mat-form-field>
-    <button mat-raised-button color="primary">Primary</button>
-  </div>
+    <button mat-raised-button color="primary">Create</button>
+  </form>
 </section>

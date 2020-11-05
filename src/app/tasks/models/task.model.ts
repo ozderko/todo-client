@@ -11,7 +11,7 @@ export class Task {
     this.id = obj._id;
     this.name = obj.name;
     this.description = obj.description;
-    this.selected = obj.selected;
-    this.markers = obj.markers.map((marker: Color) => new Color(marker));
+    this.selected = obj.selected ? obj.selected : false;
+    this.markers = obj.markers ? obj.markers.map((marker: Color) => new Color(marker)) : [];
   }
 }

@@ -1,0 +1,17 @@
+<section class="task" [ngClass]="{'task-selected': !task.selected}">
+  <div class="task__select" [ngClass]="{'selected': task.selected}" (click)="select()">
+
+  </div>
+  <div class="task__description">
+    <h3>Name: {{task.name}}</h3>
+    <p>Description: {{task.description}}</p>
+  </div>
+  <div class="task__info">
+    <div class="task__info--container">
+      <div class="task__info--colors" *ngFor="let color of task.markers"
+           [ngStyle]="{'background': '#' + color.color}"></div>
+    </div>
+    <button mat-button color="accent">More..</button>
+  </div>
+
+</section>

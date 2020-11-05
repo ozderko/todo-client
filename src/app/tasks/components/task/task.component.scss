@@ -1,0 +1,63 @@
+@import "../../../../assets/variables/colors";
+@import "../../../../../node_modules/@angular/material/theming";
+
+.task {
+  width: 685px;
+  display: flex;
+  flex-direction: row;
+  background: $primary-header;
+  margin-bottom: 10px;
+  border-radius: 3px;
+
+  &__select {
+    width: 40px;
+    height: 40px;
+    margin: 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    border: 1px solid $primary-white;
+
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    h3 {
+      margin: 15px 0 0 0;
+    }
+
+    p {
+      margin: 7px 0 0 0;
+      font-size: 14px;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &--container {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+    }
+
+    &--colors {
+
+      width: 20px;
+      height: 20px;
+
+    }
+  }
+
+}
+
+.selected {
+  background: $primary-white;
+}
+
+.task-selected {
+  background: white;
+}

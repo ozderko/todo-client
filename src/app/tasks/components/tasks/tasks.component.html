@@ -1,4 +1,7 @@
 
 <section class="tasks">
   <app-toolbar></app-toolbar>
+  <div class="tasks__container">
+    <app-task *ngFor="let task of tasks" [task]="task"></app-task>
+  </div>
 </section>

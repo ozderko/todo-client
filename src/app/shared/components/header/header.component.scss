@@ -39,7 +39,7 @@
 @mixin header-dark-theme($theme, $theme-type) {
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
-  $primary-color: $primary-header;
+  $primary-color: $white;
   $accent-color: $accent-white;
   $accent-color-opacity: $accent-white-opacity;
   $white-gray-color: $white;

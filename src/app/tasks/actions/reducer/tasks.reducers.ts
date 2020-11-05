@@ -16,6 +16,16 @@ export function tasksReducer(state = initialState, action: TasksAction): State {
         ...state,
         tasks: action.tasks
       };
+    case TasksActionTypes.SelectTaskSuccess:
+      return {
+        ...state,
+        tasks: action.tasks
+      };
+    case TasksActionTypes.CreateTaskSuccess:
+        return {
+          ...state,
+          tasks: action.tasks
+        };
     default:
       return state;
   }

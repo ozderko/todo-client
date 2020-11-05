@@ -19,4 +19,16 @@ export class TasksService {
       map((tasks: Task[]) => tasks.map((task: Task) => new Task(task)))
     );
   }
+
+  updateSelect(id: string): Observable<Task[]> {
+    return this.http.put<Task[]>(`${this.baseApiUrl}/todo/selected/${id}`, {}).pipe(
+      map((tasks: Task[]) => tasks.map((task: Task) => new Task(task)))
+    );
+  }
+
+  createTask(task: Task): Observable<Task[]> {
+    return this.http.post<Task[]>(`${this.baseApiUrl}/todo`, task).pipe(
+      map((tasks: Task[]) => tasks.map((todo: Task) => new Task(todo)))
+    );
+  }
 }

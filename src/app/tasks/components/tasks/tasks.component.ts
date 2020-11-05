@@ -21,7 +21,10 @@ export class TasksComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.store.dispatch(new LoadTasksAction());
-    this.taskSub$ = this.store.select(fromTasks.getTasks).subscribe((tasks: Task[]) => this.tasks = tasks);
+    this.taskSub$ = this.store.select(fromTasks.getTasks).subscribe((tasks: Task[]) => {
+      this.tasks = tasks;
+      console.log(tasks);
+    });
 
   }
 
