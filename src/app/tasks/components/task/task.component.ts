@@ -3,6 +3,7 @@ import {Task} from '../../models/task.model';
 import {Store} from '@ngrx/store';
 import {State} from '../../actions/reducer/tasks.reducers';
 import {SelectTaskAction} from '../../actions/tasks.action';
+import {Marker} from '../../models/marker.model';
 
 @Component({
   selector: 'app-task',
@@ -11,6 +12,8 @@ import {SelectTaskAction} from '../../actions/tasks.action';
 })
 export class TaskComponent implements OnInit {
   @Input() task: Task;
+  @Input() markers: Marker[];
+  public isOpen = false;
 
   constructor(private store: Store<State>) {
   }

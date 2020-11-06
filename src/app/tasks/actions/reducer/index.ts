@@ -21,3 +21,8 @@ export const getTasks = createSelector(
   getTasksListState,
   (state: fromTaskState.State) => state.tasks
 );
+
+export const getMarkers = createSelector(
+  getTasksListState,
+  (state: fromTaskState.State) => state.markers
+);

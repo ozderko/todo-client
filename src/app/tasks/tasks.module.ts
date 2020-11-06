@@ -9,11 +9,13 @@ import {TasksEffects} from './actions/effects/tasks.effects';
 import {reducers} from './actions/reducer/index';
 import {ToolbarComponent} from './components/toolbar/toolbar.component';
 import {TaskComponent} from './components/task/task.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {ReactiveFormsModule} from '@angular/forms';
+import {ColorPickerModule} from 'ngx-color-picker';
+import { MarkersComponent } from './components/markers/markers.component';
 
 
 @NgModule({
-  declarations: [TasksComponent, ToolbarComponent, TaskComponent],
+  declarations: [TasksComponent, ToolbarComponent, TaskComponent, MarkersComponent],
   imports: [
     CommonModule,
     TasksRoutingModule,
@@ -21,6 +23,7 @@ import {ReactiveFormsModule} from "@angular/forms";
     StoreModule.forFeature('tasks', reducers),
     EffectsModule.forFeature([TasksEffects]),
     ReactiveFormsModule,
+    ColorPickerModule
   ]
 })
 export class TasksModule {

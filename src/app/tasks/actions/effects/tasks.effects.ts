@@ -7,20 +7,23 @@ import {Observable} from 'rxjs';
 import {map, switchMap} from 'rxjs/operators';
 import {
   CreateTaskAction,
-  CreateTaskSuccessAction,
+  CreateTaskSuccessAction, LoadMarkersAction, LoadMarkersSuccessAction,
   LoadTasksAction,
-  LoadTasksSuccessAction,
+  LoadTasksSuccessAction, SaveMarkerAction, SaveMarkerSuccessAction, SelectMarkerAction, SelectMarkerSuccessAction,
   SelectTaskAction,
   SelectTaskSuccessAction,
   TasksActionTypes
 } from '../tasks.action';
 import {Task} from '../../models/task.model';
+import {MarkersService} from '../../services/markers.service';
+import {Marker} from '../../models/marker.model';
 
 @Injectable()
 export class TasksEffects {
 
   constructor(private actions: Actions,
               private tasksService: TasksService,
+              private markersService: MarkersService,
               private store: Store<State>) {
   }
 
@@ -50,6 +53,36 @@ export class TasksEffects {
     switchMap((action: CreateTaskAction) => {
       return this.tasksService.createTask(action.task).pipe(
         map((tasks: Task[]) => new CreateTaskSuccessAction(tasks)),
+      );
+    })
+  );
+
+  @Effect()
+  loadMarkers: Observable<Action> = this.actions.pipe(
+    ofType(TasksActionTypes.LoadMarkers),
+    switchMap((action: LoadMarkersAction) => {
+      return this.markersService.getMarkers().pipe(
+        map((markers: Marker[]) => new LoadMarkersSuccessAction(markers)),
+      );
+    })
+  );
+
+  @Effect()
+  selectMarker: Observable<Action> = this.actions.pipe(
+    ofType(TasksActionTypes.SelectMarker),
+    switchMap((action: SelectMarkerAction) => {
+      return this.tasksService.selectMarker(action.id, action.color).pipe(
+        map((tasks: Task[]) => new CreateTaskSuccessAction(tasks)),
+      );
+    })
+  );
+
+  @Effect()
+  saveMarker: Observable<Action> = this.actions.pipe(
+    ofType(TasksActionTypes.SaveMarker),
+    switchMap((action: SaveMarkerAction) => {
+      return this.markersService.saveColor(action.marker).pipe(
+        map((markers: Marker[]) => new SaveMarkerSuccessAction(markers)),
       );
     })
   );

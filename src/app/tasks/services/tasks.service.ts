@@ -31,4 +31,10 @@ export class TasksService {
       map((tasks: Task[]) => tasks.map((todo: Task) => new Task(todo)))
     );
   }
+
+  selectMarker(id: string, color: string): Observable<Task[]> {
+    return this.http.put<Task[]>(`${this.baseApiUrl}/todo/${id}`, {color}).pipe(
+      map((tasks: Task[]) => tasks.map((todo: Task) => new Task(todo)))
+    );
+  }
 }

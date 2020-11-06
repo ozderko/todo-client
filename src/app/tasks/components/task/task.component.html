@@ -7,11 +7,15 @@
     <p>Description: {{task.description}}</p>
   </div>
   <div class="task__info">
-    <div class="task__info--container">
+    <div class="task__info--container" >
       <div class="task__info--colors" *ngFor="let color of task.markers"
-           [ngStyle]="{'background': '#' + color.color}"></div>
+           [ngStyle]="{'background': '#' + color.color}" (click)="isOpen = !isOpen"></div>
+      <div class="task__info--colors no-color" *ngIf="task.markers.length === 0" (click)="isOpen = !isOpen">
+        <div class="add-color">+</div>
+      </div>
+      <app-markers [isOpen]="isOpen" [markers]="markers" [taskId]="task.id" class="markers"></app-markers>
     </div>
+
     <button mat-button color="accent">More..</button>
   </div>
-
 </section>

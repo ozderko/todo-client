@@ -2,6 +2,6 @@
 <section class="tasks">
   <app-toolbar></app-toolbar>
   <div class="tasks__container">
-    <app-task *ngFor="let task of tasks" [task]="task"></app-task>
+    <app-task *ngFor="let task of tasks" [task]="task" [markers]="markers"></app-task>
   </div>
 </section>

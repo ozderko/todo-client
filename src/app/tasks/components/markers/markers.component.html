@@ -1,0 +1,18 @@
+<section class="markers" *ngIf="isOpen">
+  <div class="markers__add" (click)="isAddColor = !isAddColor">
+    <button mat-button>{{!isAddColor ? 'Add color' : 'Chose marker'}}</button>
+  </div>
+  <div class="markers__grid" *ngIf="!isAddColor">
+    <div *ngFor="let marker of markers" class="markers__grid--color" [ngStyle]="{'background': '#' + marker.color}" (click)="selectMarker(taskId, marker.color)">
+      <p>{{marker.name}}</p>
+    </div>
+  </div>
+  <div class="markers__color" *ngIf="isAddColor">
+    <mat-form-field appearance="outline">
+      <mat-label>Name marker</mat-label>
+      <input matInput placeholder="Write name" #nameColor>
+    </mat-form-field>
+    <input class="colors__add-color--picker" [(colorPicker)]="color" [style.background]="color" [cpPosition]="'bottom'"/>
+    <button mat-button color="primary" (click)="saveMarker(color, nameColor.value); isAddColor = !isAddColor">Save</button>
+  </div>
+</section>
