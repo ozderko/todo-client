@@ -1,16 +1,16 @@
 # TodoClient
 This is the task manager service.
 
-There are two design themes, light and dark.
+#### There are two design themes, light and dark.
 ![todo-client](https://media.giphy.com/media/8ptXHgoAUCbU1Iv5JQ/giphy.gif)
 
-There demonstrated login.
+#### There demonstrated login.
 ![todo-client-login](https://media.giphy.com/media/Fq2j3HIbZp65MiQGlY/giphy.gif)
 
-You can create tasks, and add type to tasks.
+#### You can create tasks, and add type to tasks.
 ![todo-client-add-data](https://media.giphy.com/media/KM7p7nXW5pKH07KEOO/giphy.gif)
 
-You can create type.
+#### You can create type.
 ![todo-client-add-color](https://media.giphy.com/media/upIG2zqypsXSQt5kbK/giphy.gif)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.1.
