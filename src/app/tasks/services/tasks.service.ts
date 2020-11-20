@@ -26,8 +26,9 @@ export class TasksService {
     );
   }
 
-  createTask(task: Task): Observable<Task[]> {
-    return this.http.post<Task[]>(`${this.baseApiUrl}/todo`, task).pipe(
+  createTask(task: Task, projectId: string): Observable<Task[]> {
+    console.log('run')
+    return this.http.post<Task[]>(`${this.baseApiUrl}/todo/${projectId}`, task).pipe(
       map((tasks: Task[]) => tasks.map((todo: Task) => new Task(todo)))
     );
   }

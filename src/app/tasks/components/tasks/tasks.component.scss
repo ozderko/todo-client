@@ -2,11 +2,12 @@
 @import "../../../../../node_modules/@angular/material/theming";
 
 .tasks {
-  min-height: calc(100vh - 130px);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding-top: 130px;
+}
+
+.drop-zone {
+  height: 80%;
 }
 
 @mixin tasks-dark-theme($theme, $theme-type) {
@@ -19,6 +20,6 @@
   }
 
   .tasks {
-      background: $primary-color;
+      //background: $primary-color;
   }
 }

@@ -1,9 +1,19 @@
 import {Action} from '@ngrx/store';
 import {Task} from '../models/task.model';
 import {Marker} from '../models/marker.model';
+import {Project} from '../models/project.model';
+import {TaskChangeProject} from "../models/taskChangeProject.model";
 
 
 export enum TasksActionTypes {
+  LoadProjects = '[Project] Get project action',
+  LoadProjectsSuccess = '[Project] Get project success action',
+  CreateProject = '[Project] Create project action',
+  CreateProjectSuccess = '[Project] Create project success action',
+  ChangeTaskProject = '[Project] Change task project action',
+  ChangeTaskProjectSuccess = '[Project] Change task project success action',
+
+
   LoadTasks = '[Tasks] Get tasks action',
   LoadTasksSuccess = '[Tasks] Get tasks success action',
   SelectTask = '[Task] Select task action',
@@ -18,6 +28,46 @@ export enum TasksActionTypes {
   SaveMarker = '[Marker] Save marker action',
   SaveMarkerSuccess = '[Marker] Save marker success action',
 }
+
+export class LoadProjectsAction implements Action {
+  public readonly type = TasksActionTypes.LoadProjects;
+}
+
+export class LoadProjectsSuccessAction implements Action {
+  public readonly type = TasksActionTypes.LoadProjectsSuccess;
+
+  constructor(public projects: Project[]) {
+  }
+}
+
+export class CreateProjectAction implements Action {
+  public readonly type = TasksActionTypes.CreateProject;
+
+  constructor(public project: Project) {
+  }
+}
+
+export class CreateProjectSuccessAction implements Action {
+  public readonly type = TasksActionTypes.CreateProjectSuccess;
+
+  constructor(public projects: Project[]) {
+  }
+}
+
+export class ChangeTaskProjectAction implements Action {
+  public readonly type = TasksActionTypes.ChangeTaskProject;
+
+  constructor(public projectData: TaskChangeProject) {
+  }
+}
+
+export class ChangeTaskProjectSuccessAction implements Action {
+  public readonly type = TasksActionTypes.ChangeTaskProjectSuccess;
+
+  constructor(public projects: Project[]) {
+  }
+}
+
 
 export class LoadTasksAction implements Action {
   public readonly type = TasksActionTypes.LoadTasks;
@@ -47,7 +97,7 @@ export class SelectTaskSuccessAction implements Action {
 export class CreateTaskAction implements Action {
   public readonly type = TasksActionTypes.CreateTask;
 
-  constructor(public task: Task) {
+  constructor(public task: Task, public projectId: string) {
   }
 }
 
@@ -99,6 +149,12 @@ export class SaveMarkerSuccessAction implements Action {
 }
 
 export type TasksAction =
+  LoadProjectsAction |
+  LoadProjectsSuccessAction |
+  CreateProjectAction |
+  CreateProjectSuccessAction |
+  ChangeTaskProjectAction |
+  ChangeTaskProjectSuccessAction |
   LoadTasksAction |
   LoadTasksSuccessAction |
   SelectTaskAction |

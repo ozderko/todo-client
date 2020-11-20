@@ -12,10 +12,13 @@ import {TaskComponent} from './components/task/task.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {ColorPickerModule} from 'ngx-color-picker';
 import { MarkersComponent } from './components/markers/markers.component';
+import { ProjectsComponent } from './components/projects/projects.component';
+import { AddProjectComponent } from './components/toolbar/add-project/add-project.component';
+import { AddTaskComponent } from './components/toolbar/add-task/add-task.component';
 
 
 @NgModule({
-  declarations: [TasksComponent, ToolbarComponent, TaskComponent, MarkersComponent],
+  declarations: [TasksComponent, ToolbarComponent, TaskComponent, MarkersComponent, ProjectsComponent, AddProjectComponent, AddTaskComponent],
   imports: [
     CommonModule,
     TasksRoutingModule,

@@ -1,9 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
-import {Task} from '../../models/task.model';
+import {Component, Input, OnInit} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {State} from '../../actions/reducer/tasks.reducers';
-import {CreateTaskAction} from '../../actions/tasks.action';
+import {TypeAdd} from './enum-type-add/enum-type-add';
+import {Project} from '../../models/project.model';
 
 @Component({
   selector: 'app-toolbar',
@@ -11,27 +10,29 @@ import {CreateTaskAction} from '../../actions/tasks.action';
   styleUrls: ['./toolbar.component.scss']
 })
 export class ToolbarComponent implements OnInit {
-  public createForm: FormGroup;
+  @Input() projects: Project[];
+  public TypeAdd = TypeAdd;
+  public typeAdd: TypeAdd = TypeAdd.Undefined;
 
   constructor(private store: Store<State>) {
   }
 
   ngOnInit(): void {
-    this.prepareForm();
+    // this.prepareForm();
   }
 
-  prepareForm() {
-    this.createForm = new FormGroup({
-      name: new FormControl(''),
-      description: new FormControl(''),
-    });
-  }
-
-  onSubmit() {
-    if (this.createForm.invalid) {
-      return;
-    }
-    this.store.dispatch(new CreateTaskAction(this.createForm.value));
-  }
+  // prepareForm() {
+  //   this.createForm = new FormGroup({
+  //     name: new FormControl(''),
+  //     description: new FormControl(''),
+  //   });
+  // }
+  //
+  // onSubmit() {
+  //   if (this.createForm.invalid) {
+  //     return;
+  //   }
+  //   this.store.dispatch(new CreateTaskAction(this.createForm.value));
+  // }
 
 }

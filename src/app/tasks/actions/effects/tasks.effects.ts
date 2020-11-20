@@ -6,8 +6,10 @@ import {TasksService} from '../../services/tasks.service';
 import {Observable} from 'rxjs';
 import {map, switchMap} from 'rxjs/operators';
 import {
+  ChangeTaskProjectAction, ChangeTaskProjectSuccessAction,
+  CreateProjectAction, CreateProjectSuccessAction,
   CreateTaskAction,
-  CreateTaskSuccessAction, LoadMarkersAction, LoadMarkersSuccessAction,
+  CreateTaskSuccessAction, LoadMarkersAction, LoadMarkersSuccessAction, LoadProjectsAction, LoadProjectsSuccessAction,
   LoadTasksAction,
   LoadTasksSuccessAction, SaveMarkerAction, SaveMarkerSuccessAction, SelectMarkerAction, SelectMarkerSuccessAction,
   SelectTaskAction,
@@ -17,6 +19,8 @@ import {
 import {Task} from '../../models/task.model';
 import {MarkersService} from '../../services/markers.service';
 import {Marker} from '../../models/marker.model';
+import {ProjectsService} from '../../services/projects/projects.service';
+import {Project} from '../../models/project.model';
 
 @Injectable()
 export class TasksEffects {
@@ -24,8 +28,39 @@ export class TasksEffects {
   constructor(private actions: Actions,
               private tasksService: TasksService,
               private markersService: MarkersService,
+              private projectsService: ProjectsService,
               private store: Store<State>) {
   }
+
+  @Effect()
+  loadProject: Observable<Action> = this.actions.pipe(
+    ofType(TasksActionTypes.LoadProjects),
+    switchMap((action: LoadProjectsAction) => {
+      return this.projectsService.getProjects().pipe(
+        map((projects: Project[]) => new LoadProjectsSuccessAction(projects)),
+      );
+    })
+  );
+
+  @Effect()
+  createProject: Observable<Action> = this.actions.pipe(
+    ofType(TasksActionTypes.CreateProject),
+    switchMap((action: CreateProjectAction) => {
+      return this.projectsService.createProject(action.project).pipe(
+        map((projects: Project[]) => new CreateProjectSuccessAction(projects)),
+      );
+    })
+  );
+
+  @Effect()
+  changeTaskProject: Observable<Action> = this.actions.pipe(
+    ofType(TasksActionTypes.ChangeTaskProject),
+    switchMap((action: ChangeTaskProjectAction) => {
+      return this.projectsService.taskChangeProject(action.projectData).pipe(
+        map((projects: Project[]) => new ChangeTaskProjectSuccessAction(projects)),
+      );
+    })
+  );
 
   @Effect()
   loadTasks: Observable<Action> = this.actions.pipe(
@@ -51,7 +86,7 @@ export class TasksEffects {
   createTasks: Observable<Action> = this.actions.pipe(
     ofType(TasksActionTypes.CreateTask),
     switchMap((action: CreateTaskAction) => {
-      return this.tasksService.createTask(action.task).pipe(
+      return this.tasksService.createTask(action.task, action.projectId).pipe(
         map((tasks: Task[]) => new CreateTaskSuccessAction(tasks)),
       );
     })

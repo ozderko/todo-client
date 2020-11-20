@@ -1,4 +1,4 @@
-<section class="task" [ngClass]="{'task-selected': !task.selected}">
+<section class="task" [ngClass]="{'task-selected': !task.selected}" cdkDrag>
   <div class="task__select" [ngClass]="{'selected': task.selected}" (click)="select()">
 
   </div>

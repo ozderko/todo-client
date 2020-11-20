@@ -1,0 +1,9 @@
+<section class="projects">
+  <app-toolbar [projects]="projects"></app-toolbar>
+  <div class="projects__container" cdkDropListGroup>
+    <div *ngFor="let project of projects" class="projects__tasks-container">
+      <h3>Project name: {{project.name}}</h3>
+      <app-tasks [markers]="markers" [tasks]="getTasks(project)" [project]="project"></app-tasks>
+    </div>
+  </div>
+</section>

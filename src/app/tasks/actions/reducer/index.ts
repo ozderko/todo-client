@@ -17,6 +17,11 @@ export const getTasksListState = createSelector(
   (state: TasksState) => state.tasksList
 );
 
+export const getProjects = createSelector(
+  getTasksListState,
+  (state: fromTaskState.State) => state.projects
+);
+
 export const getTasks = createSelector(
   getTasksListState,
   (state: fromTaskState.State) => state.tasks

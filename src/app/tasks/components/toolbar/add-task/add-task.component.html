@@ -1,0 +1,20 @@
+<form [formGroup]="createForm" (ngSubmit)="onSubmit()" class="add-task">
+  <div class="add-task__back">
+    <mat-icon color="primary" (click)="back.emit(TypeAdd.Undefined)">arrow_back</mat-icon>
+  </div>
+  <mat-form-field appearance="outline">
+    <mat-label>Select project</mat-label>
+    <mat-select matNativeControl required formControlName="projectId">
+      <mat-option *ngFor="let project of projects" [value]="project.id">{{project.name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Write name task...</mat-label>
+    <input matInput placeholder="Write name" formControlName="name" required>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Write description tasl...</mat-label>
+    <input matInput placeholder="Write description" formControlName="description" required>
+  </mat-form-field>
+  <button mat-raised-button color="primary">Create</button>
+</form>

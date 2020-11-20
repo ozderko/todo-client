@@ -1,0 +1,10 @@
+<form [formGroup]="createForm" (ngSubmit)="onSubmit()" class="add-project">
+  <div class="add-project__back">
+    <mat-icon color="primary" (click)="back.emit(TypeAdd.Undefined)">arrow_back</mat-icon>
+  </div>
+  <mat-form-field appearance="outline">
+    <mat-label>Write name project...</mat-label>
+    <input matInput placeholder="Write name" required formControlName="name">
+  </mat-form-field>
+  <button mat-raised-button color="primary">Create</button>
+</form>

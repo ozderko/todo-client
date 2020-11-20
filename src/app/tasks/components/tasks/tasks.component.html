@@ -1,6 +1,10 @@
-
-<section class="tasks">
-  <app-toolbar></app-toolbar>
+<div *ngIf="tasks.length === 0" cdkDropList
+     (cdkDropListDropped)="drop($event)"
+     [cdkDropListData]="{project: project, tasks: tasks}" class="drop-zone">Dont have tasks
+</div>
+<section class="tasks" cdkDropList
+         (cdkDropListDropped)="drop($event)"
+         [cdkDropListData]="{project: project, tasks: tasks}">
   <div class="tasks__container">
     <app-task *ngFor="let task of tasks" [task]="task" [markers]="markers"></app-task>
   </div>
