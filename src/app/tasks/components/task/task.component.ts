@@ -14,6 +14,7 @@ export class TaskComponent implements OnInit {
   @Input() task: Task;
   @Input() markers: Marker[];
   public isOpen = false;
+  public isDroped = false;
 
   constructor(private store: Store<State>) {
   }
@@ -24,5 +25,4 @@ export class TaskComponent implements OnInit {
   select(): void {
     this.store.dispatch(new SelectTaskAction(this.task.id));
   }
-
 }
