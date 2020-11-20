@@ -1,6 +1,19 @@
 # TodoClient
 This is the task manager service.
 
+## Version 2
+
+#### You can now add projects and manage tasks.
+![todo-client-add-project](https://media.giphy.com/media/uzZZNIXjoxJnHAYN7k/giphy.gif)
+
+#### RWD
+![todo-client-rwd](https://media.giphy.com/media/eZzYNz4OJV9IHYsDZ9/giphy.gif)
+
+#### You can manage tasks, drag and drop to project
+![todo-client-manage-tasks](https://media.giphy.com/media/BOBs9gqsS1TBC0ylAq/giphy.gif)
+
+## Version 1
+
 #### There are two design themes, light and dark.
 ![todo-client](https://media.giphy.com/media/8ptXHgoAUCbU1Iv5JQ/giphy.gif)
 

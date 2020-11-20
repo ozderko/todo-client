@@ -36,6 +36,14 @@
   }
 }
 
+// TODO
+
+@media (max-width: 1300px) {
+  .header {
+    display: none;
+  }
+}
+
 @mixin header-dark-theme($theme, $theme-type) {
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
