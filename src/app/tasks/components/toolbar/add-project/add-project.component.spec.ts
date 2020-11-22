@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AddProjectComponent } from './add-project.component';
+import {StoreModule} from '@ngrx/store';
+import {EffectsModule} from '@ngrx/effects';
 
 describe('AddProjectComponent', () => {
   let component: AddProjectComponent;
@@ -8,6 +10,10 @@ describe('AddProjectComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        StoreModule.forRoot({}),
+        EffectsModule.forRoot(),
+      ],
       declarations: [ AddProjectComponent ]
     })
     .compileComponents();

@@ -4,8 +4,8 @@ import {TypeAdd} from '../enum-type-add/enum-type-add';
 import {Project} from '../../../models/project.model';
 import {Store} from '@ngrx/store';
 import {State} from '../../../actions/reducer/tasks.reducers';
-import {CreateTaskAction} from "../../../actions/tasks.action";
-import {Task} from "../../../models/task.model";
+import {CreateTaskAction} from '../../../actions/tasks.action';
+import {Task} from '../../../models/task.model';
 
 @Component({
   selector: 'app-add-task',

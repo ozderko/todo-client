@@ -14,7 +14,7 @@ export class ToolbarComponent implements OnInit {
   public TypeAdd = TypeAdd;
   public typeAdd: TypeAdd = TypeAdd.Undefined;
 
-  constructor(private store: Store<State>) {
+  constructor() {
   }
 
   ngOnInit(): void {

@@ -1,4 +1,4 @@
-<div *ngIf="tasks.length === 0" cdkDropList
+<div *ngIf="tasks && tasks.length === 0" cdkDropList
      (cdkDropListDropped)="drop($event)"
      [cdkDropListData]="{project: project, tasks: tasks}" class="drop-zone">Dont have tasks
 </div>

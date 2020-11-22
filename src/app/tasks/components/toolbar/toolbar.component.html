@@ -1,19 +1,9 @@
 <section></section>
 <section class="toolbar">
   <div class="toolbar__container" [ngClass]="{'padding-if-undefined': typeAdd === TypeAdd.Undefined}">
-    <button mat-raised-button *ngIf="typeAdd === TypeAdd.Undefined" (click)="typeAdd = TypeAdd.AddProject">Add project</button>
-    <button mat-raised-button *ngIf="typeAdd === TypeAdd.Undefined" (click)="typeAdd = TypeAdd.AddTask">Add task</button>
+    <button mat-raised-button class="btn-project" *ngIf="typeAdd === TypeAdd.Undefined" (click)="typeAdd = TypeAdd.AddProject">Add project</button>
+    <button mat-raised-button class='btn-task'*ngIf="typeAdd === TypeAdd.Undefined" (click)="typeAdd = TypeAdd.AddTask">Add task</button>
     <app-add-project *ngIf="typeAdd === TypeAdd.AddProject" (back)="typeAdd = $event" ></app-add-project>
     <app-add-task *ngIf="typeAdd === TypeAdd.AddTask" (back)="typeAdd = $event" [projects]="projects"></app-add-task>
-  <!--       [formGroup]="createForm" (ngSubmit)="onSubmit()"-->
-<!--    <mat-form-field appearance="outline">-->
-<!--      <mat-label>Write name task...</mat-label>-->
-<!--      <input matInput  placeholder="Write name" formControlName="name">-->
-<!--    </mat-form-field>-->
-<!--    <mat-form-field appearance="outline">-->
-<!--      <mat-label>Write description tasl...</mat-label>-->
-<!--      <input matInput  placeholder="Write description" formControlName="description">-->
-<!--    </mat-form-field>-->
-<!--    <button mat-raised-button color="primary">Create</button>-->
   </div>
 </section>

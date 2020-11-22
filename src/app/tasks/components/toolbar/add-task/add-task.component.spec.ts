@@ -1,6 +1,8 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { AddTaskComponent } from './add-task.component';
+import {AddTaskComponent} from './add-task.component';
+import {StoreModule} from '@ngrx/store';
+import {EffectsModule} from '@ngrx/effects';
 
 describe('AddTaskComponent', () => {
   let component: AddTaskComponent;
@@ -8,9 +10,13 @@ describe('AddTaskComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddTaskComponent ]
+      imports: [
+        StoreModule.forRoot({}),
+        EffectsModule.forRoot(),
+      ],
+      declarations: [AddTaskComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
