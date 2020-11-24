@@ -2,7 +2,6 @@ import {TasksAction, TasksActionTypes} from '../tasks.action';
 import {Task} from '../../models/task.model';
 import {Marker} from '../../models/marker.model';
 import {Project} from '../../models/project.model';
-import {TaskChangeProject} from "../../models/taskChangeProject.model";
 
 export interface State {
   projects: Project[];
@@ -46,6 +45,7 @@ export function tasksReducer(state = initialState, action: TasksAction): State {
     case TasksActionTypes.CreateTaskSuccess:
       return {
         ...state,
+        projects: action.projects,
         tasks: action.tasks
       };
     case TasksActionTypes.LoadMarkersSuccess:

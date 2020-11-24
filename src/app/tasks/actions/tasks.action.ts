@@ -2,7 +2,7 @@ import {Action} from '@ngrx/store';
 import {Task} from '../models/task.model';
 import {Marker} from '../models/marker.model';
 import {Project} from '../models/project.model';
-import {TaskChangeProject} from "../models/taskChangeProject.model";
+import {TaskChangeProject} from '../models/taskChangeProject.model';
 
 
 export enum TasksActionTypes {
@@ -104,7 +104,7 @@ export class CreateTaskAction implements Action {
 export class CreateTaskSuccessAction implements Action {
   public readonly type = TasksActionTypes.CreateTaskSuccess;
 
-  constructor(public tasks: Task[]) {
+  constructor(public tasks: Task[], public projects: Project[]) {
   }
 }
 

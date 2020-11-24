@@ -87,7 +87,7 @@ export class TasksEffects {
     ofType(TasksActionTypes.CreateTask),
     switchMap((action: CreateTaskAction) => {
       return this.tasksService.createTask(action.task, action.projectId).pipe(
-        map((tasks: Task[]) => new CreateTaskSuccessAction(tasks)),
+        map((data: any) => new CreateTaskSuccessAction(data.tasks, data.projects)),
       );
     })
   );
@@ -107,7 +107,7 @@ export class TasksEffects {
     ofType(TasksActionTypes.SelectMarker),
     switchMap((action: SelectMarkerAction) => {
       return this.tasksService.selectMarker(action.id, action.color).pipe(
-        map((tasks: Task[]) => new CreateTaskSuccessAction(tasks)),
+        map((tasks: Task[]) => new SelectMarkerSuccessAction(tasks)),
       );
     })
   );

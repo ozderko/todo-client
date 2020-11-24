@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Task} from '../models/task.model';
 import {map} from 'rxjs/operators';
+import {Project} from '../models/project.model';
 
 @Injectable({
   providedIn: 'root'
@@ -26,11 +27,13 @@ export class TasksService {
     );
   }
 
-  createTask(task: Task, projectId: string): Observable<Task[]> {
-    console.log('run')
+  createTask(task: Task, projectId: string): Observable<any> {
     return this.http.post<Task[]>(`${this.baseApiUrl}/todo/${projectId}`, task).pipe(
-      map((tasks: Task[]) => tasks.map((todo: Task) => new Task(todo)))
-    );
+      map((data: any) => {
+        const tasks = data.tasks.map((todo: Task) => new Task(todo));
+        const projects = data.projects.map((project: Project) => new Project(project));
+        return {tasks, projects};
+      }));
   }
 
   selectMarker(id: string, color: string): Observable<Task[]> {

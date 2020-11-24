@@ -11,6 +11,8 @@
 @import "app/tasks/components/toolbar/toolbar.component";
 @import "app/tasks/components/tasks/tasks.component";
 @import "app/tasks/components/task/task.component";
+@import "app/tasks/components/projects/projects.component";
+@import "app/tasks/components/markers/markers.component";
 // Plus imports for other components in your app.
 
 $general-typography: mat-typography-config(
@@ -26,6 +28,8 @@ $font-family: '"Montserrat", sans-serif'
   @include toolbar-dark-theme($theme, $theme-type);
   @include tasks-dark-theme($theme, $theme-type);
   @include task-dark-theme($theme, $theme-type);
+  @include projects-dark-theme($theme, $theme-type);
+  @include markers-dark-theme($theme, $theme-type);
 }
 
 // Include the common styles for Angular Material. We include this here so that you only

@@ -2,11 +2,11 @@
 @import "../../../../../node_modules/@angular/material/theming";
 
 .markers {
-  position: absolute;
-  top: 0;
-  right: -230px;
-  background: white;
-  border-radius: 3px;
+
+  &__add {
+    display: flex;
+    justify-content: center;
+  }
 
   &__grid {
     display: grid;
@@ -50,4 +50,33 @@
       border-radius: 5px;
     }
   }
+}
+
+@mixin markers-dark-theme($theme, $theme-type) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $primary-color: $primary-white;
+  $accent-color-opacity: $accent-white-opacity;
+  $white-gray-color: $white;
+  $dark-text-color: $primary-dark;
+
+  @if $theme-type == 'dark-theme' {
+    $primary-color: $primary-dark;
+    $accent-color: $primary-dark;
+    $accent-color-opacity: $accent-dark-opacity;
+    $white-gray-color: $accent-dark;
+    $dark-text-color: $white;
+  }
+
+  .markers {
+    background: $white-gray-color;
+    &__grid {
+      &--color {
+        p {
+         color: $dark-text-color;
+        }
+      }
+    }
+  }
+
 }

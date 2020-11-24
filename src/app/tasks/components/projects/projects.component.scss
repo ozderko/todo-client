@@ -8,7 +8,6 @@
   flex-direction: column;
   align-items: center;
   padding-top: 130px;
-  background: $primary-white;
 
   &__container {
     width: 100%;
@@ -18,13 +17,40 @@
   }
 
   &__tasks-container {
-    padding: 0 10px;
+    padding: 0 10px 10px 10px;
     margin: 10px;
-    background: white;
     flex: 1;
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-
-    //TODO
-    //height: 100%;
   }
+}
+
+@mixin projects-dark-theme($theme, $theme-type) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $primary-color: $primary-white;
+  $accent-color-opacity: $accent-white-opacity;
+  $white-gray-color: $white;
+  $dark-text-color: $primary-dark;
+
+  @if $theme-type == 'dark-theme' {
+    $primary-color: $primary-dark;
+    $accent-color: $primary-dark;
+    $accent-color-opacity: $accent-dark-opacity;
+    $white-gray-color: $accent-dark;
+    $dark-text-color: $white;
+  }
+
+  .projects {
+    background: $primary-color;
+
+    &__tasks-container {
+      background: $white-gray-color;
+
+      h3 {
+        color: $dark-text-color;
+      }
+    }
+
+  }
+
 }
