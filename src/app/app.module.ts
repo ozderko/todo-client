@@ -29,7 +29,7 @@ import {SharedModule} from './shared/shared.module';
         tokenGetter: () => {
           return localStorage.getItem('x-access-token');
         },
-        allowedDomains: ['localhost:3000'],
+        allowedDomains: ['todo-nest-backend.herokuapp.com'],
       }
     }),
     SharedModule
